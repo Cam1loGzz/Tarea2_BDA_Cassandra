@@ -1,0 +1,25 @@
+Tracing session: 99e7b090-c2a0-11f1-a168-7db36782e8e0
+
+ activity                                                                                                                   | timestamp                  | source     | source_elapsed | client
+----------------------------------------------------------------------------------------------------------------------------+----------------------------+------------+----------------+-----------
+                                                                                                         Execute CQL3 query | 2026-10-07 22:44:05.785000 | 172.18.0.4 |              0 | 127.0.0.1
+  Parsing SELECT nombre,nacionalidad FROM actors_by_nationality WHERE nacionalidad='Chilena'; [Native-Transport-Requests-1] | 2026-10-07 22:44:05.787000 | 172.18.0.4 |           1745 | 127.0.0.1
+                                                                          Preparing statement [Native-Transport-Requests-1] | 2026-10-07 22:44:05.797000 | 172.18.0.4 |          11646 | 127.0.0.1
+ speculating read retry on Full(/172.18.0.3:7000,(-3206670872962339814,-3028135448429948847]) [Native-Transport-Requests-1] | 2026-10-07 22:44:05.808000 | 172.18.0.4 |          22686 | 127.0.0.1
+                                                    Executing single-partition query on actors_by_nationality [ReadStage-4] | 2026-10-07 22:44:05.808001 | 172.18.0.4 |          23231 | 127.0.0.1
+                                                                                 Acquiring sstable references [ReadStage-4] | 2026-10-07 22:44:05.809000 | 172.18.0.4 |          23337 | 127.0.0.1
+                    Sending READ_REQ message to cassandra2/172.18.0.3:7000 message size 120 bytes [Messaging-EventLoop-3-4] | 2026-10-07 22:44:05.809001 | 172.18.0.4 |          23364 | 127.0.0.1
+                                    Skipped 0/0 non-slice-intersecting sstables, included 0 due to tombstones [ReadStage-4] | 2026-10-07 22:44:05.809002 | 172.18.0.4 |          23613 | 127.0.0.1
+                                                 READ_REQ message received from /172.18.0.4:7000 [Messaging-EventLoop-3-10] | 2026-10-07 22:44:05.811000 | 172.18.0.3 |             47 | 127.0.0.1
+                                                    Executing single-partition query on actors_by_nationality [ReadStage-1] | 2026-10-07 22:44:05.812000 | 172.18.0.3 |           1105 | 127.0.0.1
+                                                                    Merged data from memtables and 0 sstables [ReadStage-4] | 2026-10-07 22:44:05.812000 | 172.18.0.4 |          26430 | 127.0.0.1
+                                                                                 Acquiring sstable references [ReadStage-1] | 2026-10-07 22:44:05.812001 | 172.18.0.3 |           1216 | 127.0.0.1
+                                                                       Read 6 live rows and 0 tombstone cells [ReadStage-4] | 2026-10-07 22:44:05.812001 | 172.18.0.4 |          26881 | 127.0.0.1
+                                    Skipped 0/0 non-slice-intersecting sstables, included 0 due to tombstones [ReadStage-1] | 2026-10-07 22:44:05.812002 | 172.18.0.3 |           1429 | 127.0.0.1
+                                                                    Merged data from memtables and 0 sstables [ReadStage-1] | 2026-10-07 22:44:05.814000 | 172.18.0.3 |           3333 | 127.0.0.1
+                                                                       Read 6 live rows and 0 tombstone cells [ReadStage-1] | 2026-10-07 22:44:05.815000 | 172.18.0.3 |           3907 | 127.0.0.1
+                                                                       Enqueuing response to /172.18.0.4:7000 [ReadStage-1] | 2026-10-07 22:44:05.815001 | 172.18.0.3 |           4059 | 127.0.0.1
+                    Sending READ_RSP message to cassandra1/172.18.0.4:7000 message size 428 bytes [Messaging-EventLoop-3-4] | 2026-10-07 22:44:05.815002 | 172.18.0.3 |           4460 | 127.0.0.1
+                                                 READ_RSP message received from /172.18.0.3:7000 [Messaging-EventLoop-3-10] | 2026-10-07 22:44:05.827000 | 172.18.0.4 |             58 | 127.0.0.1
+                                                         Processing response from /172.18.0.3:7000 [RequestResponseStage-1] | 2026-10-07 22:44:05.828000 | 172.18.0.4 |            484 | 127.0.0.1
+                                                                                                           Request complete | 2026-10-07 22:44:05.815030 | 172.18.0.4 |          30030 | 127.0.0.1
