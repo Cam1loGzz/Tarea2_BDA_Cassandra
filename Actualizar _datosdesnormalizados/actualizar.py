@@ -7,7 +7,7 @@ def ejecutar_cql(query):
     return res.stdout
 
 def main():
-    print("Obteniendo actores actuales desde Cassandra...")
+    print("Obteniendo actores desde Cassandra")
     salida_json = ejecutar_cql("SELECT json id, nombre, nacionalidad, edad, patrimonio FROM actors_by_id;")
     
     lineas = salida_json.strip().split("\n")
@@ -17,7 +17,7 @@ def main():
         if l.startswith('{"'):
             actores.append(json.loads(l))
 
-    print(f"Procesando {len(actores)} actores...")
+    print(f"Procesando {len(actores)} actores")
     sentencias_cql = ["USE actors;"]
 
     for actor in actores:
@@ -59,8 +59,8 @@ def main():
     with open("actualizacion.cql", "w", encoding="utf-8") as f:
         f.write("\n".join(sentencias_cql) + "\n")
         
-    print("Archivo 'actualizacion.cql' generado exitosamente.")
-    print("Aplicando actualizaciones al clúster de Cassandra...")
+    print("Archivo 'actualizacion.cql' generado")
+    print("Aplicando actualizaciones al cluster")
     
     # Aplicar todas las sentencias en Cassandra
     cmd_apply = ["docker", "exec", "-i", "cassandra1", "cqlsh"]
